@@ -1,13 +1,13 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-const licenseHas =
 
 function renderLicenseBadge(license) {
-  const license
-  if (questions[10].message === "") {
+  if (license) {
+
   } else {
     return "";
   }
+  return;
 }
 
 // TODO: Create a function that returns the license link
@@ -19,8 +19,8 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `#Title 
+function generateMarkdown = data => {
+  return `#${data.title} 
   # Description 
   # Table of Contents 
   * [Installation](#installation)
@@ -30,17 +30,23 @@ function generateMarkdown(data) {
   * [Tests](#tests)
   * [Questions](#questions)
   # Installation
-  The following necessary dependencies must be installed to run the application properly: inquire, fs, util
-  # Usage
-  # License
-  
-  ![GitHub license]
-  # Contributing
-  # Tests
-  # Questions
+  The following dependencies must be installed to run this application properly: ${data.installation}
 
+  # Usage
+  ${data.usage}
+
+  # License
+  This project is licensed under ${data.license}
+
+
+  # Contributing
+  ${data.contributing}
+
+  # Tests
+${data.tests}
+
+  # Questions
+If you have any questions please contact me at ${data.githubemail}
 
 `;
 }
-
-

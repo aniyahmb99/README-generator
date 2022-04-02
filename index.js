@@ -1,8 +1,8 @@
 // TODO: Include packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
-const generateMarkdown = require("./util/generateMarkdown.js");
-
+const { title } = require("process");
+const generateMarkdown = require("./utils/generateMarkdown");
 // TODO: Create an array of questions for user input
 const questions = [
   {
@@ -54,9 +54,9 @@ const questions = [
     type: "input",
     message: "Which license will you use for this project?",
     name: "license",
+    choices: ["MIT", "GNU"],
   },
 ];
-
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
@@ -64,7 +64,9 @@ function writeToFile(fileName, data) {}
 function init() {
   inquirer
     .prompt(questions)
-    .then(generateMarkdown())
+    .then((answers) => {
+      console.log(answers);
+    })
     .catch((error) => {
       if (error.isTtyError) {
         console.log("Prompt couldn't be rendered in the current environment");
