@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 const fs = require("fs");
+const { write } = require("ieee754");
 const inquirer = require("inquirer");
 const { title } = require("process");
 const generateMarkdown = require("./utils/generateMarkdown");
@@ -52,9 +53,8 @@ const questions = [
   },
   {
     type: "input",
-    message: "Which license will you use for this project?",
+    message: "Which license will you use for this project? MIT or GNU",
     name: "license",
-    choices: ["MIT", "GNU"],
   },
 ];
 // TODO: Create a function to write README file
@@ -65,7 +65,7 @@ function init() {
   inquirer
     .prompt(questions)
     .then((answers) => {
-      console.log(answers);
+      writeToFile(fileName, data);
     })
     .catch((error) => {
       if (error.isTtyError) {
