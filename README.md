@@ -2,6 +2,8 @@
 
 # Description
 
+This application quickly and efficiently writes neat, quality README.md files for your Github project.
+
 # Table of Contents
 
 - [Installation](#installation)
