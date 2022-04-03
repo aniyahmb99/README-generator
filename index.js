@@ -1,10 +1,9 @@
 // TODO: Include packages needed for this application
+const path = require("path");
 const fs = require("fs");
-const { write } = require("ieee754");
 const inquirer = require("inquirer");
-const { title } = require("process");
-const { file } = require("tmp");
 const generateMarkdown = require("./utils/generateMarkdown");
+
 // TODO: Create an array of questions for user input
 const questions = [
   {
@@ -60,31 +59,14 @@ const questions = [
 ];
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, function (err) {
-    console.log(fileName);
-    console.log(data);
-    if (err) {
-      return console.log(err);
-    } else {
-      console.log("Your README.md file was successfully generated!");
-    }
-  });
+  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
 }
 
 // TODO: Create a function to initialize app
 function init() {
-  inquirer
-    .prompt(questions)
-    .then((answers) => {
-      writeToFile(fileName, data);
-    })
-    .catch((error) => {
-      if (error.isTtyError) {
-        console.log("Prompt couldn't be rendered in the current environment");
-      } else {
-        console.log("Something else went wrong");
-      }
-    });
+  inquirer.prompt(questions).then((answers) => {
+    writeToFile("README.md", generateMarkdown({ ...answers }));
+  });
 }
 
 // Function call to initialize app
